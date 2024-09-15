@@ -29,6 +29,7 @@ interface Props {
   subtitleStyle?: ViewStyle | TextStyle;
   easing?: EasingFunction;
   onAnimationComplete?: (status: any) => void;
+  children?: React.ReactNode;
 }
 
 const AnimatedProgressWheel = ({
@@ -51,6 +52,7 @@ const AnimatedProgressWheel = ({
   subtitleStyle = {},
   easing,
   containerColor,
+  children,
 }: Props) => {
   const [labelValue, setLabelValue] = useState(0);
   const animatedVal = useMemo(() => new Animated.Value(0), []);
@@ -183,14 +185,20 @@ const AnimatedProgressWheel = ({
       <View style={{transform: [{rotate: rotation}]}}>{renderLoader()}</View>
       {showProgressLabel && (
         <View style={styles.labelContainer}>
-          {labelValue !== null && (
-            <Text style={[styles.label, labelStyle]}>
-              {labelValue}
-              {showPercentageSymbol ? '%' : ''}
-            </Text>
-          )}
-          {!!subtitle && (
-            <Text style={[styles.label, subtitleStyle]}>{subtitle}</Text>
+          {children ? (
+            children
+          ) : (
+            <>
+              {labelValue !== null && (
+                <Text style={[styles.label, labelStyle]}>
+                  {labelValue}
+                  {showPercentageSymbol ? '%' : ''}
+                </Text>
+              )}
+              {!!subtitle && (
+                <Text style={[styles.label, subtitleStyle]}>{subtitle}</Text>
+              )}
+            </>
           )}
         </View>
       )}
