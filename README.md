@@ -1,120 +1,79 @@
-# react-native-progress-wheel
-<a href="https://www.npmjs.com/package/react-native-progress-wheel"><img src="https://img.shields.io/npm/dm/react-native-progress-wheel.svg?style=flat-square" alt="NPM downloads"></a>
-[![npm](https://img.shields.io/npm/dt/react-native-progress-wheel.svg)](https://www.npmjs.org/package/react-native-progress-wheel)
-  <a href="https://www.npmjs.com/package/react-native-progress-wheel"><img src="https://img.shields.io/npm/v/react-native-progress-wheel.svg?style=flat-square" alt="NPM version"></a>
+This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-React Native component for creating natively animated, circular progress wheel.
+# Getting Started
 
-## Example app
+>**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
-![image](preview.gif)
+## Step 1: Start the Metro Server
 
-## Installation
+First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
 
-    yarn add react-native-progress-wheel
+To start Metro, run the following command from the _root_ of your React Native project:
 
-## Usage
-```js
-import AnimatedProgressWheel from 'react-native-progress-wheel';
+```bash
+# using npm
+npm start
 
-<AnimatedProgressWheel 
-    size={120}
-    width={20} 
-    color={'yellow'}
-    progress={45}
-    backgroundColor={'orange'}
-/>
+# OR using Yarn
+yarn start
 ```
 
-You can define a progress value, and a value from which to animate when the component is mounted.
-The following example will animate from 0% to 45% at a duration of 3 seconds.
+## Step 2: Start your Application
 
-```js
-<AnimatedProgressWheel
-    progress={45}
-    animateFromValue={0}
-    duration={3000}
-/>
+Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+
+### For Android
+
+```bash
+# using npm
+npm run android
+
+# OR using Yarn
+yarn android
 ```
 
+### For iOS
 
-The progress wheel can display progess as titles in the center of the circle.
+```bash
+# using npm
+npm run ios
 
-![image](titles.gif)
-
-```js
-<AnimatedProgressWheel
-        max={40}
-        showProgressLabel={true}
-        rotation={'-90deg'}
-        labelStyle={styles.progressLabel}
-        subtitle={'Questions out of 40'}
-        subtitleStyle={styles.subtitle}
-        {...{color, backgroundColor, size, width, duration, progress, rounded}}
-      />
+# OR using Yarn
+yarn ios
 ```
 
-The progress wheel can be updated using state variables.
+If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
 
-```js
-<AnimatedProgressWheel
-    progress={this.state.sliderProgress}
-/>
-```
+This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
 
-![image](state.gif)
+## Step 3: Modifying your App
 
-## Configuration
+Now that you have successfully run the app, let's modify it.
 
-You can configure the component using these props:
+1. Open `App.tsx` in your text editor of choice and edit some lines.
+2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
 
-Name                | Type                   | Default value           | Description
------------------   |------------------------|-------------------------|--------------
-size                | number                 | 200                     | Width and height of circle
-width               | number                 | 25                      | Thickness of the progress line
-color               | string                 | white                   | Color of the progress line
-backgroundColor     | string                 | gray                    | Color of the background progress line
-progress            | number                 | 0                       | Angle from which the progress starts from
-max                 | number                 | 100                     | Max value for the progress wheel
-rotation            | string                 | 0deg                    | Set starting angle of progress
-duration            | number                 | 600                     | Duration at which to animate the progress
-rounded             | boolean                | false                   | Rounds edges
-animateFromValue    | number                 | -1                      | Starting value to animate to progres when component is mounted
-containerColor      | string                 | null                    | Container color
-delay               | number                 | 0                       | Delay for animation
-easing              | EasingFunction         | null                    | Easing for animation
-showProgressLabel   | boolean                | false                   | Show the progress as text in the circle
-labelStyle          | TextStyle              | {}                      | Style object for progress label
-subtitle            | string                 | null                    | Text displayed directly below progress label
-subtitleStyle       | TextStyle              | {}                      | Style object for subtitle
-showPercentageSymbol| boolean                | false                   | Show the progress as a percentage
-onAnimationComplete | function               | null                    | Called when animation finishes
+   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
 
+## Congratulations! :tada:
 
-## Why use this component
+You've successfully run and modified your React Native App. :partying_face:
 
-This implementation is 100% base react-native, meaning you do not need to use any additional libraries such as 'react-native-svg' or 'react-native-reanimated'.
-This component also sets `useNativeDriver: true`, meaning that all animation is done smoothly on the native side.💖
+### Now what?
 
-This package is also SUPER-LIGHTWEIGHT.
+- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
+- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
 
-Let's compare:
+# Troubleshooting
 
-react-native-progress-wheel: Unpacked size: 8.74 kB (this library)
+If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
 
-react-native-circular-progress: Unpacked size: 3.38 MB (other popular library)
+# Learn More
 
-![image](performance_compare.gif)
+To learn more about React Native, take a look at the following resources:
 
-## FAQ
-Q: Does it work in Expo?
-A: Yes it does.
-
-Q: Does it support Typescript?
-A: From version 2.0.0 onwards, Typescript is fully supported.
-
-Q: How can I get round edges?
-A: Pass rounded={true} in the components props. (v2 and up.)
-
-Enjoy making smooth animated designs that use the native driver and DON'T require any additional dependencies.
-If you like this library please give it a star on GitHub! ⭐️
+- [React Native Website](https://reactnative.dev) - learn more about React Native.
+- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
+- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
+- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
+- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
